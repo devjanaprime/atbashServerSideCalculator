@@ -1,0 +1,13 @@
+user can input two values (2 input elements)
+select type of mathematical operation (buttons)
+= button is clicked
+capture this input
+bundle it up in an object
+and then send this object to the server via a POST
+'C' button that will clear the user input fields
+server should be able to handle Addition, Subtraction, Multiplication, and Division
+send answer back to the client in an object
+display answer on the DOM
+historical record of all math operations and solutions on the server
+Display history on the page load
+Update the list when a new calculation is made
