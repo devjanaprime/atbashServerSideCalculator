@@ -8,7 +8,7 @@ app.use( bodyParser.urlencoded( { extended: true } ) );
 
 // globals
 const port = 5000;
-var history = [];
+let history = [];
 let answer = 0;
 
 // spin up server
