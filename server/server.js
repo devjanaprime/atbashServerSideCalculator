@@ -8,6 +8,8 @@ app.use( bodyParser.urlencoded( { extended: true } ) );
 
 // globals
 const port = 5000;
+var history = [];
+let answer = 0;
 
 // spin up server
 app.listen( port, ()=>{
@@ -16,5 +18,33 @@ app.listen( port, ()=>{
 
 app.post( '/calculate', ( req, res )=>{
     console.log( 'in /calculate POST', req.body );
-    res.send( 'meow' );
-}) // // end POST calculate
+    if( req.body.operation === '-'){
+        answer = Number( req.body.num1 ) - Number( req.body.num2 );
+    }
+    else if( req.body.operation === '*'){
+        answer = Number( req.body.num1 ) * Number( req.body.num2 );
+    }
+    else if( req.body.operation === '/'){
+        answer = Number( req.body.num1 ) / Number( req.body.num2 );
+    }
+    else{
+        answer = Number( req.body.num1 ) + Number( req.body.num2 );
+    }
+    // add this to history
+    const tempObject = {
+        num1: req.body.num1,
+        operation: req.body.operation,
+        num2: req.body.num2,
+        answer: answer
+    }
+    history.push( tempObject );
+    res.sendStatus( 201 );
+}) // end POST calculate
+
+app.get( '/calculate', ( req, res )=>{
+    res.send( { answer: answer } );
+}) // end GET calculate
+
+app.get( '/history', ( req, res )=>{
+    res.send( history );
+}) // end GET history

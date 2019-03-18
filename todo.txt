@@ -5,9 +5,9 @@ x capture this input
 x bundle it up in an object
 x send this object to the server via a POST
 x 'C' button that will clear the user input fields
-server should be able to handle Addition, Subtraction, Multiplication, and Division
-send answer back to the client in an object
-display answer on the DOM
-historical record of all math operations and solutions on the server
-Display history on the page load
-Update the list when a new calculation is made
+x server should be able to handle Addition, Subtraction, Multiplication, and Division
+x send answer back to the client in an object
+x display answer on the DOM
+x historical record of all math operations and solutions on the server
+x Display history on the page load
+x Update the list when a new calculation is made
