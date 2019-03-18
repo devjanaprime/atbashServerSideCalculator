@@ -10,15 +10,35 @@
 </head>
 <body>
     <h1>Atbash Server Side Calculator</h1>
-    <input type="number" placeholder="num1" id="num1In">
-    <button class="operationSelector">+</button>
-    <button class="operationSelector">-</button>
-    <button class="operationSelector">*</button>
-    <button class="operationSelector">/</button>
-    <input type="number" placeholder="num2" id="num2In">
-    <button id="equalsButton">=</button>
-    <button id="clearButton">C</button>
-    <h3 id="answerOut">0.0</h3>
+    <p>
+        <input type="text" placeholder="0" id="currentDisplay">
+        <button id="clearButton">C</button>
+    </p>
+    <p>
+        <button class="numberSelector">7</button>
+        <button class="numberSelector">8</button>
+        <button class="numberSelector">9</button>
+        <button class="operationSelector">+</button>
+    </p>
+    <p>
+        <button class="numberSelector">4</button>
+        <button class="numberSelector">5</button>
+        <button class="numberSelector">6</button>
+        <button class="operationSelector">-</button>
+    </p>
+    <p>
+        <button class="numberSelector">1</button>
+        <button class="numberSelector">2</button>
+        <button class="numberSelector">3</button>
+        <button class="operationSelector">*</button>
+    </p>
+    <p>
+        <button class="numberSelector">0</button>
+        <button class="numberSelector">.</button>
+        <button id="equalsButton">=</button>
+        <button class="operationSelector">/</button>
+    </p>
+    <h2>History:</h2>
     <ul id="historyOut">
         <li>3+4=7</li>
         <li>3*4=12</li>

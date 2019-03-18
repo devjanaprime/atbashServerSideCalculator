@@ -1,16 +1,14 @@
 $( document ).ready( readyNow );
 
 var currentCalculation = {
-    num1: 0,
+    num1: '',
     operation: '',
-    num2: 0
+    num2: ''
 }
 
 function calculate(){
     console.log( 'in calculate' );
     // get user inputs, combine with selected operation, create an object
-    currentCalculation.num1 = $( '#num1In' ).val();
-    currentCalculation.num2 = $( '#num2In' ).val();
     console.log( 'currentCalculation:', currentCalculation );
     // send object to server via POST
     $.ajax({
@@ -28,8 +26,7 @@ function calculate(){
 
 function clearInputs(){
     console.log( 'in clearInputs' );
-    $( '#num1In' ).val( '' );
-    $( '#num2In' ).val( '' );
+    $( '#currentDisplay' ).val( '' );
     currentCalculation.operation = '';
 } // end clearInputs
 
@@ -42,9 +39,7 @@ function getAnswer(){
     }).then( function( response ){
         console.log( 'back from GET with:', response );
         // display answer on DOM in answerOut
-        let el = $( '#answerOut' );
-        el.empty();
-        el.append( response.answer );
+        $( '#currentDisplay' ).val( response.answer );
     })
 } // end getAnswer
 
@@ -52,14 +47,32 @@ function readyNow(){
     $( '#equalsButton' ).on( 'click', calculate );
     $( '#clearButton' ).on( 'click', clearInputs );
     $( '.operationSelector' ).on( 'click', selectOperation );
+    $( '.numberSelector' ).on( 'click', selectNumber );
     updateHistory();
 } // end readyNow
+
+function selectNumber(){
+    console.log( 'in selectNumber:', $( this ).text() );
+    if( currentCalculation.operation === '' ){
+        currentCalculation.num1 += $( this ).text();
+    }
+    else{
+        currentCalculation.num2 += $( this ).text();
+    }
+    console.log( currentCalculation );
+    updateDisplay();
+} // end selectNumber
 
 function selectOperation(){
     console.log( 'in selectOperation', $( this ).text() );
     currentCalculation.operation = $( this ).text();
     console.log( 'currentOperation:', currentCalculation );
+    updateDisplay();
 } // end selectOperation
+
+function updateDisplay(){
+    $( '#currentDisplay' ).val( currentCalculation.num1 + currentCalculation.operation + currentCalculation.num2 );
+}
 
 function updateHistory(){
     console.log( 'in updateHistory' );
